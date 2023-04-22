@@ -3,5 +3,6 @@ services:
   svelte-init:
     user: "1000:1000"
   web:
+    user: "1000:1000"
     ports:
       - 5173:5173
