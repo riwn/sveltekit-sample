@@ -2,11 +2,11 @@
 
 init:
 	cp compose.override.yml.sample compose.override.yml
-	docker compose exec svelte-init npm create svelte@latest svelte-test
+	docker compose exec svelte-init bash -c "npm create svelte@latest svelte-test && cd svelte-test && npm install"
 
 build:
 	docker compose build
 up:
-	docker compose up -d
+	docker compose up -d web
 down:
 	docker compose down
