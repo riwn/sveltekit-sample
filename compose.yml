@@ -1,0 +1,19 @@
+version: '3'
+services:
+  svelte-init:
+    tty: true
+    build:
+      context: .
+      dockerfile: .image/init.Dockerfile
+    volumes:
+      - .:/usr/src/app
+  web:
+    build:
+      context: ./svelte-test
+      dockerfile: ../.image/Dockerfile
+    tty: true
+    environment:
+      - NODE_ENV=development
+      - PORT=5173
+    volumes:
+      - ./svelte-test:/app
