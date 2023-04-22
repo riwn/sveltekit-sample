@@ -11,9 +11,21 @@ make init
 ```
 色々聞かれますが、初期設定についての質問が流れてくるので一つずつ選択していきます。
 
-Dockerコンテナ内でSvelteKitのInstallまで行います。
+Dockerコンテナ内でSvelteKitのInstallとNode ModuleのInstallまで行います。
 
+- 実行内容
 ```bash
 cp compose.override.yml.sample compose.override.yml
-docker compose exec svelte-init npm create svelte@latest svelte-test
+docker compose exec svelte-init bash -c "npm create svelte@latest svelte-test && cd svelte-test && npm install"
+```
+
+これでsvelte-test直下にSvelteKitの実行環境が構築されます。
+
+## サーバーの起動
+- SvelteKitでは起動はViteを使って行います。
+
+以下を実行することで5173ポートでアプリにアクセス可能です。
+- `http://localhost:5173`
+```bash
+make up
 ```

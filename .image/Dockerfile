@@ -3,15 +3,14 @@ FROM node:slim
 
 WORKDIR /app
 
-## パッケージをインストール
+# パッケージをインストール
+# NOTE: init時にjsを選択した場合はtsconfigは生成されないのでコメントアウトする
 COPY ./package.json ./
-# COPY ./package-lock.json ./
-# COPY ./tsconfig.json ./
+COPY ./package-lock.json ./
+COPY ./tsconfig.json ./
 RUN npm install
 
 COPY . .
-
-# RUN npm run build
 
 WORKDIR /app
 
